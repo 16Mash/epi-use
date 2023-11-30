@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +7,5 @@ import Chart from 'chart.js/auto';
 })
 
 export class AppComponent {
-  title = 'epi-use';
-  chart: any = []
+  
 }
