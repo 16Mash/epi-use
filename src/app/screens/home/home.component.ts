@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
-
+import { Router } from '@angular/router';
+import { Employee } from 'src/app/model/employee.model';
+import { EmployeeService } from 'src/app/employee.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,8 +11,9 @@ import Chart from 'chart.js/auto';
 export class HomeComponent {
   title = 'epi-use';
   chart: any = [];
+  employees: Employee[] = [];
  
-  constructor() {}
+  constructor(private router: Router ,private employeeService: EmployeeService) {}
 
   ngOnInit() {
     this.chart = new Chart('canvas', {
@@ -35,5 +38,15 @@ export class HomeComponent {
         },
       },
     });
+    this.getAllEmployees();
+  }
+  getAllEmployees(){
+    this.employeeService.getEmployees().subscribe(data=> 
+      this.employees = data)
+  }
+
+
+  navigateToAddEmployee(): void {
+    this.router.navigate(['/add-employee']); 
   }
 }

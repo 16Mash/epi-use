@@ -8,12 +8,16 @@ import {OrganizationChartModule} from 'primeng/organizationchart';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartComponent } from './components/chart/chart.component';
 import { ToastModule } from 'primeng/toast';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChartComponent
+    ChartComponent,
+    AddEmployeeComponent
     
   ],
   imports: [
@@ -22,7 +26,9 @@ import { ToastModule } from 'primeng/toast';
     OrganizationChartModule,
     BrowserAnimationsModule,
     BrowserModule,
-    ToastModule
+    ToastModule,
+    FormsModule,
+    HttpClientModule
     
     
   ],
