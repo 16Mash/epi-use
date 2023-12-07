@@ -49,4 +49,9 @@ export class HomeComponent {
   navigateToAddEmployee(): void {
     this.router.navigate(['/add-employee']); 
   }
+
+//   navigateToUserDetails(empId: any): void {
+//     this.router.navigate(['/user-profile',empId]);
+// }
+
 }

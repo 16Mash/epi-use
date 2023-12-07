@@ -1,13 +1,15 @@
+import { EmployeeType } from "./employee-type.enum";
+
 export interface Employee {
   id?: number,
   name: string,
   surname: string,
-  salary: 0,
+  salary: number,
   position: string,
   isManager: boolean,
   manager?: Employee,
-  employeeType: '',
+  employeeType: EmployeeType,
   birth : Date,
-  managerName: ''
+  managerName: '' 
 
 }

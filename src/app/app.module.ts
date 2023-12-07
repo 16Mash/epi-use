@@ -10,14 +10,18 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ToastModule } from 'primeng/toast';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ApiCallsComponent } from './components/api-calls/api-calls.component'; 
+import { SharedModule } from 'primeng/api';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ChartComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    UserDetailsComponent
     
   ],
   imports: [
@@ -29,8 +33,6 @@ import { HttpClientModule } from '@angular/common/http';
     ToastModule,
     FormsModule,
     HttpClientModule
-    
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

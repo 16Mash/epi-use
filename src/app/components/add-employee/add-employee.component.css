@@ -1,0 +1,15 @@
+.container{
+  width: 500px;
+  height: 550px;
+  margin: 50px;
+  margin-left: 45vh;
+  padding-top: 5%;
+  outline: solid 1px black;
+  display: flex;
+  justify-content: center;
+ 
+ 
+}
+.in{
+    margin: 0px;
+ } 

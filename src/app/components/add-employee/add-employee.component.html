@@ -1,13 +1,71 @@
 
-  <form (submit)="createEmployee()">
-    <input type="text" [(ngModel)]="newEmployee.name" placeholder="Name" name="name">
-    <input type="text" [(ngModel)]="newEmployee.surname" placeholder="Surname" name="surname">
-   
+  <form (submit)="createEmployee()" name="add">
+    <!-- <div class="in">
 
+    <input type="text" [(ngModel)]="newEmployee.name" placeholder="Name" name="name">
+    <br>
     
-    
-    
-    
-    
+    <input type="text" [(ngModel)]="newEmployee.surname" placeholder="Surname" name="surname">
+    <br>
+    <input type="text" [(ngModel)]="newEmployee.salary" placeholder="Salary" name="salary">
+    <br>
+    <input type="text" [(ngModel)]="newEmployee.birth" placeholder="Birthdate" name="birth">
+    <br>
+    <label for="position">Select a Position</label>
+    <select name="position" [(ngModel)]="newEmployee.surname" id="position">
+    <option value="CEO">CEO</option>
+    <option value="EMPLOYEE">EMPLOYEE</option>
+    <option value="MANAGER">MANAGER</option>
+    </select>
+    <br>
+    <label for="managerSelect">Select a Manager:</label>
+    <select id="managerSelect" [(ngModel)]="newEmployee.manager" name="select">
+      <option *ngFor="let manager of managers" [value]="manager">{{ manager.id +" " + manager.name}}</option>
+    </select>
+    <br>
     <button type="submit">Add Employee</button>
-  </form>
+ 
+  </div> -->
+  <h4 class="text-center">Add New Employee Or Manager</h4>
+  <div class="container">
+    
+    <div class="in">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="email"[(ngModel)]="newEmployee.name" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name">
+    </div>
+    <br>
+    <div class="form-group">
+    <input type="text" [(ngModel)]="newEmployee.surname"  class="form-control" placeholder="Surname" name="surname">
+    </div>
+    <br>
+    <div class="form-group">
+    <input type="text" [(ngModel)]="newEmployee.position"  class="form-control" placeholder="Position" name="position">
+    </div>
+    <br>
+    <div class="form-group">
+      <input type="date" [(ngModel)]="newEmployee.birth" class="form-control" id="date" placeholder="Birth Date" name="birth">
+    </div>
+    <br>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newEmployee.salary" class="form-control" id="salary" placeholder="Salary" name="salary">
+    </div>
+    <br>
+    <div class="form-group-select">
+      <label for="type">Select Type</label>
+      <select name="type" [(ngModel)]="newEmployee.employeeType" id="type">
+      <option value="CEO">CEO</option>
+      <option value="EMPLOYEE">EMPLOYEE</option>
+      <option value="MANAGER">MANAGER</option>
+      </select>
+      <br>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div *ngIf="successMessage" class="alert alert-success" role="alert">
+      {{ successMessage }}
+  </div>
+  </div>
+</div>
+</form>
