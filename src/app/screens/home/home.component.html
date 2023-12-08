@@ -53,7 +53,7 @@
                         <td>{{emp.name}}</td>
                         <td>{{emp.surname}}</td>
                         <td>{{emp.position}}</td>
-                        <td>{{emp.salary}}</td>
+                        <td>{{"R"+emp.salary}}</td>
                         <td>{{emp.managerName}}</td>
                         <td>{{emp.birth}}</td>
                         <td>{{emp.employeeType}}</td>
@@ -78,7 +78,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="canv">
-        <canvas id="canvas">{{chart}}</canvas>
+        <canvas #employeeCountChart>{{chart}}</canvas>
       </div>
       </div>
     

@@ -1,6 +1,9 @@
 <div *ngIf="employee">
-    <h2>User Details</h2>
+    <h2 class="text-center  text-primary">User Details</h2>
     <div class="page-content page-container" id="page-content">
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            {{ successMessage }}
+        </div>
         <div class="padding">
             <div class="row container d-flex justify-content-center">
                 <div class="col-xl-6 col-md-12">
@@ -23,7 +26,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Salary</p>
-                                            <h6 class="text-muted f-w-400">{{ employee.salary }}</h6>
+                                            <h6 class="text-muted f-w-400">{{"R "+ employee.salary }}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Birth Date</p>
@@ -33,15 +36,25 @@
                                             <p class="m-b-10 f-w-600">Manager Name</p>
                                             <h6 class="text-muted f-w-400">{{ employee.managerName }}</h6>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Type</p>
+                                            <h6 class="text-muted f-w-400">{{ employee.employeeType}}</h6>
+                                        </div>
                                     </div>
 
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
+                                    
                                     <div class="row">
+                                        
                                         <form action="">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+
+                                            <button [disabled]="employee.employeeType === EmployeeType.CEO" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Assign Manager
                                               </button>
                                               
+                                              <button (click)="deleteEmployee(employee.id)" type="button" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+
                                               <!-- Modal -->
                                               
                                               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,7 +62,7 @@
                                                   <div class="modal-content">
                                                     <div class="modal-header">
                                                       <h5 class="modal-title" id="exampleModalLabel">Assign manager to Employee</h5>
-                                                      <button [disabled]="employee.employeeType === EmployeeType.CEO" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <form #managerForm="ngForm" (ngSubmit)="assignManager(managerForm)">
                                                     <div  class="modal-body">

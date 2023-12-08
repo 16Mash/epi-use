@@ -21,14 +21,13 @@ export class UserDetailsComponent {
     this.route.params.subscribe(params => {
       const empIdParam = params['id'];
       this.empId = Number(empIdParam);
-      console.log('ID is :' ,empIdParam);
       this.getEmployeeById(this.empId);
       this.manager();
     });
   }
 
 
-  getEmployeeById(userId: number):void{
+  getEmployeeById(empId: number):void{
     this.employeeService.getEmployeeById(this.empId).subscribe((employee: Employee) => {
       this.employee = employee;
     }, (error) => {
@@ -47,11 +46,22 @@ assignManager(managerForm:any){
   this.employeeService.assignManager(this.empId, selectedManagerId).subscribe(
     (response: any) => {
       this.successMessage = 'Manager assigned successfully!';
-      console.log('Manager assigned successfully!');  
+
     },
     error => {
       console.error('Error assigning manager:', error);
     }
+);
+}
+deleteEmployee(empId: number | undefined):void{
+this.employeeService.deleteEmployee(this.empId).subscribe((employee: Employee) => {
+  this.employee=this.employee;
+  this.successMessage = 'Deleted successfully!';
+},
+error => {
+  this.successMessage = error.error;
+}
+
 );
 }
 

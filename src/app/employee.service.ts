@@ -35,4 +35,16 @@ assignManager(employeeId: number, managerId: number): Observable<any> {
   const payload = {employeeId, managerId };
   return this.http.patch<Employee>(url, payload);
 }
+
+deleteEmployee(employeeId: number):Observable<any>{
+  const url = `${this.apiUrl}/delete/${employeeId}`;
+
+  return this.http.delete<Employee>(url);
+
+}
+getManagerEmployees(managerId : number):Observable<any>{
+  const url = `${this.apiUrl}/manager-employees/${managerId}`;
+  return this.http.get(url);
+
+}
 }
