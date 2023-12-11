@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from './model/employee.model';
-import { Observable, throwError } from 'rxjs';
+import { Observable, map, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +35,14 @@ assignManager(employeeId: number, managerId: number): Observable<any> {
   const payload = {employeeId, managerId };
   return this.http.patch<Employee>(url, payload);
 }
+promoteEmployee(employeeId: number):Observable<any>{
+  const url = `${this.apiUrl}/promote/${employeeId}`;
+  const payload = {employeeId };
+  return this.http.patch<Employee>(url,payload);
+}
+
+
+
 
 deleteEmployee(employeeId: number):Observable<any>{
   const url = `${this.apiUrl}/delete/${employeeId}`;
@@ -46,5 +54,30 @@ getManagerEmployees(managerId : number):Observable<any>{
   const url = `${this.apiUrl}/manager-employees/${managerId}`;
   return this.http.get(url);
 
+}
+
+getEmployeesWithManagers(): Observable<any[]> {
+  return this.http.get<any[]>(this.apiUrl + '/all').pipe(
+    map((employees: any[]) => {
+      employees.forEach(employee => {
+        
+        if (employee.managerId) {
+          
+          const manager = employees.find(employee => employee.id === employee.managerId);  // i tried this return undefined all the time if it worked i would use the method to bind data to the org chart
+          console.log(manager )
+          if (manager) {
+            employee.managerName = manager.name; 
+            employee.displayInfo = `${employee.name} (Manager: ${manager.name})`;
+          }
+          else {
+            employee.displayInfo = `${employee.name} (Manager Not Found)`;
+          }
+        } else {
+          employee.displayInfo = `${employee.name} (Manager: CEO)`;
+        }
+      });
+      return employees;
+    })
+  );
 }
 }

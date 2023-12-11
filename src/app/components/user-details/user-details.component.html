@@ -49,11 +49,19 @@
                                         <form action="">
 
 
-                                            <button [disabled]="employee.employeeType === EmployeeType.CEO" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button [disabled]="employee.employeeType === EmployeeType.CEO ||employee.employeeType ===  EmployeeType.MANAGER
+                                             || employee.managerName != null" type="button"
+                                             class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Assign Manager
                                               </button>
                                               
-                                              <button (click)="deleteEmployee(employee.id)" type="button" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                                              <button (click)="deleteEmployee(employee.id)" type="button"
+                                               class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                                              <br>
+                                              <br>
+                                              <button [disabled]="employee.employeeType === EmployeeType.CEO
+                                               ||employee.employeeType ===EmployeeType.MANAGER"(click)="promoteEmployee(employee.id)" type="button"
+                                               class="btn btn-danger" style="margin-left: 10px;">Promote</button>
 
                                               <!-- Modal -->
                                               

@@ -32,11 +32,13 @@
     <div class="in">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="email"[(ngModel)]="newEmployee.name" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name">
+      <input type="email"[(ngModel)]="newEmployee.name"
+       class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter Name">
     </div>
     <br>
     <div class="form-group">
-    <input type="text" [(ngModel)]="newEmployee.surname"  class="form-control" placeholder="Surname" name="surname">
+    <input type="text" [(ngModel)]="newEmployee.surname" 
+     class="form-control" placeholder="Surname" name="surname">
     </div>
     <br>
     <div class="form-group">
@@ -44,11 +46,14 @@
     </div>
     <br>
     <div class="form-group">
-      <input type="date" [(ngModel)]="newEmployee.birth" class="form-control" id="date" placeholder="Birth Date" name="birth">
+      <input type="date" [(ngModel)]="newEmployee.birth" 
+      class="form-control" id="date" placeholder="Birth Date" name="birth">
     </div>
     <br>
     <div class="form-group">
-      <input type="text" [(ngModel)]="newEmployee.salary" class="form-control" id="salary" placeholder="Salary" name="salary">
+      <label for="salary">Salary</label>
+      <input type="text" [(ngModel)]="newEmployee.salary" 
+      class="form-control" id="salary" placeholder="Salary" name="salary">
     </div>
     <br>
     <div class="form-group-select">

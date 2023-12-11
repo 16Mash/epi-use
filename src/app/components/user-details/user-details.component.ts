@@ -53,6 +53,18 @@ assignManager(managerForm:any){
     }
 );
 }
+promoteEmployee(empId:number | undefined):void{
+this.employeeService.promoteEmployee(this.empId).subscribe((employee : Employee)=>{
+  this.employee =employee;
+  this.successMessage = 'Promoted successfully!';
+  
+},
+  error => {
+    this.successMessage = 'Employee is already a manager';
+  });
+}
+
+
 deleteEmployee(empId: number | undefined):void{
 this.employeeService.deleteEmployee(this.empId).subscribe((employee: Employee) => {
   this.employee=this.employee;
