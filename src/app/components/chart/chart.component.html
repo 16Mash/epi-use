@@ -1,10 +1,14 @@
+<div class="conatiner">
+  <div class="labels">
+    <h3>CEO Details</h3>
+    <h4>Full Name : {{ceoName}}  {{ceoSurname}}</h4>
+    <h4>Date of Birth :{{birth}}</h4>
+  </div>
 
-<body>
-    <div *ngIf="employeesWithManagers">
-        <ul>
-          <li *ngFor="let employee of employeesWithManagers">
-            {{ employee.displayInfo }}
-          </li>
-        </ul>
-      </div>
-</body>
+  <div class="chart" style="width: 600px;">
+    <canvas id="myChart" ></canvas>
+    <br>
+  </div>
+
+</div>
+

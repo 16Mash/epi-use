@@ -14,14 +14,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ApiCallsComponent } from './components/api-calls/api-calls.component'; 
 import { SharedModule } from 'primeng/api';
+import { DiagramModule } from '@syncfusion/ej2-angular-diagrams';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ChartComponent,
     AddEmployeeComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+  
     
   ],
   imports: [
@@ -32,7 +35,10 @@ import { SharedModule } from 'primeng/api';
     BrowserModule,
     ToastModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DiagramModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from './model/employee.model';
 import { Observable, map, throwError } from 'rxjs';
+import { EmployeeType } from './model/employee-type.enum';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,9 +42,6 @@ promoteEmployee(employeeId: number):Observable<any>{
   return this.http.patch<Employee>(url,payload);
 }
 
-
-
-
 deleteEmployee(employeeId: number):Observable<any>{
   const url = `${this.apiUrl}/delete/${employeeId}`;
 
@@ -57,27 +55,11 @@ getManagerEmployees(managerId : number):Observable<any>{
 }
 
 getEmployeesWithManagers(): Observable<any[]> {
-  return this.http.get<any[]>(this.apiUrl + '/all').pipe(
-    map((employees: any[]) => {
-      employees.forEach(employee => {
-        
-        if (employee.managerId) {
-          
-          const manager = employees.find(employee => employee.id === employee.managerId);  // i tried this return undefined all the time if it worked i would use the method to bind data to the org chart
-          console.log(manager )
-          if (manager) {
-            employee.managerName = manager.name; 
-            employee.displayInfo = `${employee.name} (Manager: ${manager.name})`;
-          }
-          else {
-            employee.displayInfo = `${employee.name} (Manager Not Found)`;
-          }
-        } else {
-          employee.displayInfo = `${employee.name} (Manager: CEO)`;
-        }
-      });
-      return employees;
-    })
-  );
+  return this.http.get<any[]>(this.apiUrl + '/all');
+}
+
+getCEO(type:EmployeeType): Observable<any> {
+    const url = `${this.apiUrl}/type/${type}`;
+    return this.http.get<Employee>(url);
 }
 }

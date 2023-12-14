@@ -49,6 +49,11 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let emp of employees">
+                     
+
+
+
+
                         <td>{{emp.id}}</td>
                         <td>{{emp.name}}</td>
                         <td>{{emp.surname}}</td>
@@ -73,15 +78,13 @@
         <button type="button" class="btn btn-primary" (click)="navigateToAddEmployee()">Register new employee</button>
         <br>
         <br>
-        <button type="button" class="btn btn-primary" >View Employee Tree</button>
+        <button type="button" class="btn btn-primary"  (click)="navigateToChart()">View Employee Tree</button>
 
     </div>
     <div class="row justify-content-center">
-      <div class="canv">
-        <canvas #employeeCountChart>{{chart}}</canvas>
-      </div>
-      </div>
     
+      </div>
+
 
     </div>
 
