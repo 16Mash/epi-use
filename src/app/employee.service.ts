@@ -11,9 +11,11 @@ export class EmployeeService {
   baseUrl = 'http://localhost:4200/user-profile';
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<Employee[]> {
+  getEmployees():Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl);
   }
+
+
   createEmployee(employee: Employee): Observable<Employee> {
     
     console.log('Response from backend:', employee);

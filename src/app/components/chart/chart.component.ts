@@ -36,8 +36,8 @@ export class ChartComponent implements OnInit {
     }
     
     getAllEmployees() {
-      this.employeeService.getEmployees().subscribe(data => {
-        this.employee = data;
+       this.employeeService.getEmployees().subscribe(data =>{
+        this.employee = data
         this.ceoName = [];
         this.birth = [];
         this.ceoSurname = [];
@@ -50,7 +50,8 @@ export class ChartComponent implements OnInit {
           }
         }
         console.log('CEO Names:', this.ceoName);
-      });
+      })
+      
     }
     getEmployeesByType(employeeType: EmployeeType): void {
       this.employeeService.getCEO(employeeType).subscribe(

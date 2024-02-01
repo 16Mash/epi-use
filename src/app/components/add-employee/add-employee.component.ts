@@ -22,9 +22,9 @@ ngOnInit(): void {
 }
 
 loadEmployees(): void {
-  this.employeeService.getEmployees().subscribe(employees => {
-    this.employees = employees;
-  });
+  this.employeeService.getEmployees().subscribe(data =>{
+    this.employees = data
+  })
 }
 
 createEmployee(): void {
